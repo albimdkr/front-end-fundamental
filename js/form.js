@@ -30,5 +30,14 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('notifikasiSisaKarakter').style.visibility =
         'visible';
     });
+
+    //onBlur
+    document.getElementById('inputNama').addEventListener('blur', function () {
+      console.log('inputNama: blur');
+      document.getElementById('notifikasiSisaKarakter').style.visibility =
+        'hidden';
+    });
+
+    
   });
 });
