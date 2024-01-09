@@ -38,6 +38,20 @@ document.addEventListener('DOMContentLoaded', function () {
         'hidden';
     });
 
-    
+    //onChange
+    document
+      .getElementById('inputCaptcha')
+      .addEventListener('change', function () {
+        console.log('inputCaptcha: change');
+
+        const inputCaptcha = document.getElementById('inputCaptcha').value;
+        const submitButtonStatus = document.getElementById('submitButton');
+
+        if (inputCaptcha === 'PRNU') {
+          submitButtonStatus.removeAttribute('disabled');
+        } else {
+          submitButtonStatus.setAttribute('disabled', '');
+        }
+      });
   });
 });
