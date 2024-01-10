@@ -68,5 +68,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         even.preventDefault();
       });
+
+    //onCopy
+    document.getElementById('inputCopy').addEventListener('copy', function () {
+      alert('Copy Successed!');
+    });
   });
 });
