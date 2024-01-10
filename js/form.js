@@ -73,5 +73,12 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('inputCopy').addEventListener('copy', function () {
       alert('Copy Successed!');
     });
+
+    //onPaste
+    document
+      .getElementById('inputPaste')
+      .addEventListener('paste', function () {
+        alert('Paste Successed!');
+      });
   });
 });
