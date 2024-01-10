@@ -53,5 +53,20 @@ document.addEventListener('DOMContentLoaded', function () {
           submitButtonStatus.setAttribute('disabled', '');
         }
       });
+
+    //validation
+    document
+      .getElementById('formDataDiri')
+      .addEventListener('submit', function (even) {
+        const inputCaptcha = document.getElementById('inputCaptcha').value;
+
+        if (inputCaptcha === 'PRNU') {
+          alert('selamat anda lolos!');
+        } else {
+          alert('Ulangi!');
+          document.getElementById('submitButton').setAttribute('disabled', '');
+        }
+        even.preventDefault();
+      });
   });
 });
