@@ -22,3 +22,12 @@ function putUserList(data) {
     localStorage.setItem(storageKey, JSON.stringify(userData));
   }
 }
+
+// getUserList dari localStorage
+function getUserList() {
+  if (checkForStorage()) {
+    return JSON.parse(localStorage.getItem(storageKey)) || [];
+  } else {
+    return [];
+  }
+}
