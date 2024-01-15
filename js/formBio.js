@@ -58,3 +58,13 @@ submitAction.addEventListener('submit', function (event) {
   putUserList(newUserData);
   renderUserList();
 });
+
+window.addEventListener('load', function () {
+  if (checkForStorage) {
+    if (localStorage.getItem(storageKey) !== null) {
+      renderUserList();
+    }
+  } else {
+    alert('Browser not support!');
+  }
+});
