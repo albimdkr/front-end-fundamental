@@ -25,3 +25,15 @@ const sessionTrueAnswerField = document.getElementById(
 const sessionUserAttemptsField = document.getElementById(
   'session-user-attempts-amount-field'
 );
+
+//inisialisasi fungsi untuk menghasilkan jawaban permainan
+function getAnswer() {
+  let answer = '123'.split('');
+  for (let i = 0; i < answer.length; i++) {
+    let j = Math.floor(Math.random() * (i + 1));
+    let tmp = answer[i];
+    answer[i] = answer[j];
+    answer[j] = tmp;
+  }
+  return answer.join('');
+}
