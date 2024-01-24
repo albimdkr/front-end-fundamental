@@ -75,3 +75,31 @@ window.addEventListener('load', function () {
     localMaximumAttemptsKey
   );
 });
+
+playButton.addEventListener('click', function () {
+  sessionStorage.setItem(sessionAnswerKey, getAnswer());
+  sessionStorage.setItem(sessionUserIsPlayingKey, true);
+  beforeGameDisplay.setAttribute('hidden', true);
+  duringGameDisplay.removeAttribute('hidden');
+});
+
+answerButton1.addEventListener('click', function () {
+  sessionUserAnswerField.innerText += '1';
+  if (sessionUserAnswerField.innerText.length == 3) {
+    checkAnswer(sessionUserAnswerField.innerText);
+  }
+});
+
+answerButton2.addEventListener('click', function () {
+  sessionUserAnswerField.innerText += '2';
+  if (sessionTrueAnswerField.innerText.length == 3) {
+    checkAnswer(sessionUserAnswerField.innerText);
+  }
+});
+
+answerButton3.addEventListener('click', function () {
+  sessionUserAnswerField.innerText += '3';
+  if (sessionUserAnswerField.innerText.length == 3) {
+    checkAnswer(sessionUserAnswerField.innerText);
+  }
+});
