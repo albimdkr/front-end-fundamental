@@ -37,3 +37,41 @@ function getAnswer() {
   }
   return answer.join('');
 }
+
+//inisialiasi key untuk session storage
+const sessionAnswerKey = 'SESSION_ANSWER';
+const sessionUserAttemptsKey = 'SESSION_USER_ATTEMPTS';
+const sessionUserIsPlayingKey = 'SESSION_USER_IS_PLAYING';
+
+//inisialisasi key untuk local storage
+const localTotalVictoryKey = 'LOCAL_TOTAL_VICTORIES_PLAYED';
+const localMaximumAttemptsKey = 'LOCAL_MAXIMUM_ATTEMPTS';
+
+window.addEventListener('load', function () {
+  if (typeof Storage !== 'undefined') {
+    // inisiasasi semua item
+    if (sessionStorage.getItem(sessionAnswerKey) === null) {
+      sessionStorage.setItem(sessionAnswerKey, '');
+    }
+    if (sessionStorage.getItem(sessionUserAttemptsKey) === null) {
+      sessionStorage.setItem(sessionUserAttemptsKey, 0);
+    }
+    if (localStorage.getItem(localTotalVictoryKey) === null) {
+      localStorage.setItem(localTotalVictoryKey, 0);
+    }
+    if (localStorage.getItem(localMaximumAttemptsKey) === null) {
+      localStorage.setItem(localMaximumAttemptsKey, 0);
+    }
+  } else {
+    alert('Browser not support!');
+  }
+
+  //inisialisasi semua nilai field pada dokumen yang menggunakan nilai dari web storage
+  sessionUserAttemptsField.innerText = sessionStorage.getItem(
+    sessionUserAttemptsKey
+  );
+  localTotalVictoryField.innerText = localStorage.getItem(localTotalVictoryKey);
+  localMaximumAttemptField.innerText = localStorage.getItem(
+    localMaximumAttemptsKey
+  );
+});
