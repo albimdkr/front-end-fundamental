@@ -103,3 +103,23 @@ answerButton3.addEventListener('click', function () {
     checkAnswer(sessionUserAnswerField.innerText);
   }
 });
+
+function checkAnswer(userGuess) {
+  const answer = sessionStorage.getItem(sessionAnswerKey);
+  if (userGuess == answer) {
+    duringGameDisplay.setAttribute('hidden', true);
+    afterGameDisplay.removeAttribute('hidden');
+    sessionTrueAnswerField.innerText = answer;
+    updateScore();
+  } else {
+    const previousAttemptAmount = parseInt(
+      sessionStorage.getItem(sessionUserAttemptsKey)
+    );
+    sessionStorage.setItem(sessionUserAttemptsKey, previousAttemptAmount + 1);
+    sessionUserAttemptsField.innerText = sessionStorage.getItem(
+      sessionUserAttemptsKey
+    );
+    sessionUserAnswerField.innerText = '';
+    sessionUserWrongAnswerField.innerText = userGuess;
+  }
+}
