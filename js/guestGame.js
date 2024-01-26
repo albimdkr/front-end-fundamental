@@ -123,3 +123,38 @@ function checkAnswer(userGuess) {
     sessionUserWrongAnswerField.innerText = userGuess;
   }
 }
+
+function updateScore() {
+  const sessionAttemptsValue = parseInt(
+    sessionStorage.getItem(sessionUserAttemptsKey)
+  );
+  const localAttemptsValue = parseInt(
+    localStorage.getItem(localMaximumAttemptsKey)
+  );
+  if (sessionAttemptsValue > localAttemptsValue) {
+    localStorage.setItem(localMaximumAttemptsKey, sessionAttemptsValue);
+    localMaximumAttemptField.innerText = sessionAttemptsValue;
+  }
+  const previousTotalVictoryAmount = parseInt(
+    localStorage.getItem(localTotalVictoryKey)
+  );
+  localStorage.setItem(localTotalVictoryKey, previousTotalVictoryAmount + 1);
+  localTotalVictoryField.innerText = localStorage.getItem(localTotalVictoryKey);
+}
+
+window.addEventListener('beforeunload', function () {
+  sessionUserAnswerField.innerText = '';
+  sessionUserWrongAnswerField.innerText = '';
+  sessionStorage.setItem(sessionUserAttemptsKey, 0);
+  sessionUserAttemptsField.innerText = sessionStorage.getItem(
+    sessionUserAttemptsKey
+  );
+});
+
+destroyDataButton.addEventListener('click', function () {
+  sessionStorage.removeItem(sessionAnswerKey);
+  sessionStorage.removeItem(sessionUserAttemptsKey);
+  localStorage.removeItem(localTotalVictoryKey);
+  localStorage.removeItem(localMaximumAttemptsKey);
+  alert('Mohon me-refresh halaman ini kembali');
+});
